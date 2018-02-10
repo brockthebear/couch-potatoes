@@ -15,10 +15,10 @@ if (window.INITIAL_STATE && window.INITIAL_STATE.location) {
     if (section) {
         const { componentName } = section;
 
-    // Preload the current page if it was rendered on the server.
-    // This prevents a flicker when the component would render the loading screen.
+        // Preload the current page if it was rendered on the server.
+        // This prevents a flicker when the component would render the loading screen.
         window.LOADED_MODULES = {};
-        System.import(`./pages/${componentName}`).then(module => {
+        System.import(`./components/${componentName}`).then(module => {
             window.LOADED_MODULES[componentName] = module.default;
             render();
         });
