@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import Navbar from 'app/components/navbar';
-import { CenterLoader } from 'app/components/Loader';
+import { CenterLoader } from './Loader';
 
 export default class Home extends Component {
     static propTypes = {
@@ -13,8 +12,6 @@ export default class Home extends Component {
         return (
             <div>
                 <Helmet defaultTitle="Couch Potatoes ❤️" titleTemplate="%s | Couch Potatoes" />
-
-                <Navbar />
 
                 <div className="exact">
                     <div className="container">

@@ -2,8 +2,8 @@ import { IndexRoute, Route } from "react-router";
 import React from "react";
 
 import App from "./App";
-import Introduction from "../pages/Introduction";
-import createProxyComponent from "../pages/createProxyComponent";
+import Home from "../components/Home";
+import createProxyComponent from "./createProxyComponent";
 import sections from "../utils/Sections";
 
 const routes = sections.map(section => {
@@ -15,8 +15,8 @@ const routes = sections.map(section => {
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Introduction} />
-    <Route path={"intro"} component={Introduction} />
+    <IndexRoute component={Home} />
+    <Route path={"home"} component={Home} />
     {routes}
   </Route>
 );

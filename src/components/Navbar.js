@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import path from 'path';
 import _Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router';
 
 export default class Navbar extends Component {
     render() {
@@ -17,28 +17,7 @@ export default class Navbar extends Component {
                     </_Navbar.Brand>
                     <_Navbar.Toggle />
                 </_Navbar.Header>
-                { this.renderNavItems() }
-                { !authUser || !authUser.id || authUser.isFetching ?
-                    null
-                    : this.renderAuthUserNav()
-                }
             </_Navbar>
-        );
-    }
-
-    renderNavItems() {
-        return (
-            <div>
-                <Route path="/home" component={({ match }) => (
-                    <Nav>
-                        <li>
-                            <NavLink to='#'>
-                                <span>Home</span>
-                            </NavLink>
-                        </li>
-                    </Nav>
-                )} />
-            </div>
         );
     }
 }

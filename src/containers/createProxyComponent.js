@@ -1,6 +1,6 @@
 import React, { Component, createElement } from "react";
 
-import Loading from "./Loading";
+import { CenterLoader } from "../components/Loader";
 
 export default relativePath => {
     let ProxiedComponent;
@@ -47,7 +47,7 @@ export default relativePath => {
             const { component } = this.state;
 
             if (!component) {
-                return <Loading />;
+                return <CenterLoader />;
             }
 
             return createElement(component, this.props);

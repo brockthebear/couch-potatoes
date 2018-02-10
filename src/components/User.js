@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
-export default class Users extends Component {
+export default class User extends Component {
     static propTypes = {
         EditUser: PropTypes.func,
         match: PropTypes.object,
@@ -9,13 +9,13 @@ export default class Users extends Component {
 
     render() {
         // const { EditUser, match } = this.props;
-        console.log('render Users');
+        console.log('render User');
 
         return (
             <div>
-                <Helmet title="Users" />
+                <Helmet title="User" />
                 <h1>
-                    Users
+                    User
                 </h1>
             </div>
         );

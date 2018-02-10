@@ -6,15 +6,21 @@ import * as Analytics from "../utils/Analytics";
 import TopLevelRoute from "./TopLevelRoute";
 
 export default class ClientRouter extends Component {
-  render() {
-    return (
-      <Router
-        history={browserHistory}
-        onUpdate={Analytics.pageView}
-        render={applyRouterMiddleware(useScroll())}
-      >
-        {TopLevelRoute}
-      </Router>
-    );
-  }
+    constructor(props, context) {
+        super(props, context);
+
+        this.onUpdate = this.onUpdate.bind(this);
+    }
+
+    onUpdate() {
+        console.log('update!');
+    }
+
+    render() {
+        return (
+            <Router history={browserHistory} onUpdate={this.onUpdate} render={applyRouterMiddleware(useScroll())}>
+                {TopLevelRoute}
+            </Router>
+        );
+    }
 }
