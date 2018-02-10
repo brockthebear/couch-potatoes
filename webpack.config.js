@@ -28,7 +28,7 @@ module.exports = (env = {}) => {
             loaders: [
                 {
                     test: /\.js$/,
-                    exclude: /node_modules(?!\/react-disqus-thread)/,
+                    exclude: /node_modules/,
                     loaders: ["babel-loader"],
                 },
                 {
