@@ -1,0 +1,9 @@
+node_modules*
+npm-debug.log
+.DS_Store
+.env
+src/config/local.js
+dist
+!dist/index.html
+server/build
+*.scssc
