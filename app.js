@@ -10,11 +10,9 @@ const app = express();
 
 const server = require('./server');
 const { globals, render } = require('./server');
-// const globals = require("./globals");
 
 // Must come before render
 Object.assign(global, globals);
-// const render = require("./render");
 
 // Log requests to the console.
 app.use(logger('dev'));
