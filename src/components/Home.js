@@ -14,7 +14,7 @@ export default class Home extends Component {
             <div>
                 <Helmet defaultTitle="Couch Potatoes ❤️" titleTemplate="%s | Couch Potatoes" />
 
-                <div className="exact">
+                <div className="application">
                     <div className="container">
                         { this.props.children }
                     </div>

@@ -4,18 +4,18 @@ import React, { Component, PropTypes } from "react";
 import TopLevelRoute from "./TopLevelRoute";
 
 export default class ServerRouter extends Component {
-  static contextTypes = {
-    location: PropTypes.string
-  };
+    static contextTypes = {
+        location: PropTypes.string,
+    };
 
-  render() {
-    const { location } = this.context;
-    let router = null;
+    render() {
+        const { location } = this.context;
+        let router = null;
 
-    match({ routes: TopLevelRoute, location }, (err, redirect, props) => {
-      router = <RouterContext {...props} />;
-    });
+        match({ routes: TopLevelRoute, location }, (err, redirect, props) => {
+            router = <RouterContext {...props} />;
+        });
 
-    return router;
-  }
+        return router;
+    }
 }
