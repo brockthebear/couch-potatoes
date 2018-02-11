@@ -7,8 +7,6 @@ import {
   getPreviousSection,
 } from "../utils/Sections";
 
-import { getTitle } from "../config";
-
 export default class App extends Component {
     state = {
         showSidebar: true,
@@ -52,11 +50,8 @@ export default class App extends Component {
 
         return (
             <div className="app">
-                <Helmet>
-                  <title>
-                    {getTitle(title)}
-                  </title>
-                  <meta property="og:title" content={getTitle(title)} />
+                <Helmet defaultTitle="Couch Potatoes ❤️" titleTemplate="%s">
+                  <meta property="og:title" content="Couch Potatoes" />
                   <meta property="og:url" content={url} />
                 </Helmet>
 

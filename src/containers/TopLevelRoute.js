@@ -14,9 +14,9 @@ const routes = sections.map(section => {
 });
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path={"home"} component={Home} />
-    {routes}
-  </Route>
+    <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="home" component={Home} />
+        {routes}
+    </Route>
 );

@@ -9,6 +9,7 @@ export default class Home extends Component {
 
     render() {
         console.log('render home');
+
         return (
             <div>
                 <Helmet defaultTitle="Couch Potatoes ❤️" titleTemplate="%s | Couch Potatoes" />

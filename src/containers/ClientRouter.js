@@ -18,7 +18,7 @@ export default class ClientRouter extends Component {
 
     render() {
         return (
-            <Router history={browserHistory} onUpdate={this.onUpdate} render={applyRouterMiddleware(useScroll())}>
+            <Router history={browserHistory} onUpdate={this.onUpdate} render={applyRouterMiddleware()}>
                 {TopLevelRoute}
             </Router>
         );
