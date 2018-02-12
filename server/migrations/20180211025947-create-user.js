@@ -26,8 +26,8 @@ module.exports = {
             type: Sequelize.JSON,
         },
         matches: {
-            type: Sequelize.ARRAY,
-            allowNull: true,
+            type: Sequelize.ARRAY(Sequelize.TEXT),
+            defaultValue: [],
         },
         createdAt: {
             allowNull: false,
@@ -38,5 +38,6 @@ module.exports = {
             type: Sequelize.DATE,
         },
     }),
+
     down: (queryInterface, Sequelize) => queryInterface.dropTable('Users'),
 };

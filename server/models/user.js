@@ -20,12 +20,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.JSON,
             allowNull: true,
         },
+        matches: {
+            type: sequelize.ARRAY(sequelize.TEXT),
+            defaultValue: [],
+        },
     });
 
     User.associate = models => {
-        User.hasMany(models.Match, {
-            foreignKey: 'matchId',
-            as: 'matches',
+        User.belongsToMany(models.UserMatches, {
+            through: 'UserMatches',
+            as: 'Users',
+            foreignKey: 'userId',
         });
     };
 
