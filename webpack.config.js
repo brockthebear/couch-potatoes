@@ -69,7 +69,7 @@ module.exports = (env = {}) => {
     const devConfig = {
         entry: [
             "react-hot-loader/patch",
-            "webpack-dev-server/client?http://localhost:3000",
+            "webpack-dev-server/client?http://localhost:8000",
             "webpack/hot/only-dev-server",
             "./index.js",
         ],
@@ -78,7 +78,7 @@ module.exports = (env = {}) => {
             contentBase: paths.dist,
             publicPath: "/",
             historyApiFallback: true,
-            port: 3000,
+            port: 8000,
         },
         devtool: "inline-source-map",
         plugins: [

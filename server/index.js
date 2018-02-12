@@ -1,22 +1,7 @@
-const compression = require("compression");
-const express = require("express");
+const globals = require('./globals');
+const render = require('./render');
 
-const path = require("path");
-
-const globals = require("./globals");
-
-// Must come before render
-Object.assign(global, globals);
-
-const render = require("./render");
-
-const port = process.env.PORT || 3000;
-const app = express();
-
-app.use(compression());
-
-app.get("/", render);
-app.use(express.static(path.resolve(__dirname, "..", "dist")));
-app.get("*", render);
-
-app.listen(port, () => console.log(`Server started on port: ${port}`));
+module.exports = {
+    globals,
+    render,
+};

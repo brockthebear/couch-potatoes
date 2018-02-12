@@ -1,8 +1,8 @@
 node_modules*
 npm-debug.log
+react-backend
 .DS_Store
 .env
-src/config/local.js
 dist
 !dist/index.html
 server/build
