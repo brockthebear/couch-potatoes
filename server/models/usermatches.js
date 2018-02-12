@@ -1,3 +1,9 @@
+/**
+ * The definition for the UserMatches model.
+ *
+ * @module server/models/usermatches
+ */
+
 module.exports = (sequelize, DataTypes) => {
     const UserMatches = sequelize.define('UserMatches', {
         user_id: {

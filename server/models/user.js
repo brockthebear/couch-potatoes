@@ -1,3 +1,9 @@
+/**
+ * The definition for the User model.
+ *
+ * @module server/models/user
+ */
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         first_name: {

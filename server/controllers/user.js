@@ -1,5 +1,11 @@
-const User = require('../models').User;
+/**
+ * The methods for the User model.
+ *
+ * @module server/controllers/user
+ */
+
 const Match = require('../models').Match;
+const User = require('../models').User;
 
 module.exports = {
     create(req, res) {
@@ -39,7 +45,7 @@ module.exports = {
         }).catch(error => res.status(400).send(error));
     },
 
-    update(req, res) {
+    edit(req, res) {
         return User.findById(req.params.user_id, {
             include: [{
                 model: Match,
@@ -67,7 +73,7 @@ module.exports = {
         .catch(error => res.status(400).send(error));
     },
 
-    deleteUser(req, res) {
+    destroy(req, res) {
         return User.findById(req.params.user_id)
             .then(user => {
                 if (!user) {
@@ -82,5 +88,5 @@ module.exports = {
                     .catch(error => res.status(400).send(error));
             })
             .catch(error => res.status(400).send(error));
-    }
+    },
 };
