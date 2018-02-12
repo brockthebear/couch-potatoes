@@ -66,4 +66,21 @@ module.exports = {
         })
         .catch(error => res.status(400).send(error));
     },
+
+    deleteUser(req, res) {
+        return User.findById(req.params.user_id)
+            .then(user => {
+                if (!user) {
+                    return res.status(404).send({
+                        message: "User with ID: " + req.params.user_id + " could not be found.",
+                    });
+                }
+
+                return user
+                    .destroy()
+                    .then(() => res.status(200).send({ message: user.email + ' deleted successfully.' }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
+    }
 };
