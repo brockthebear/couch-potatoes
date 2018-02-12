@@ -6,4 +6,5 @@ module.exports = app => {
     }));
 
     app.post('/api/user', userController.create);
+    app.get('/api/users', userController.list);
 };
