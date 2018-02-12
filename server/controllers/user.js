@@ -1,4 +1,4 @@
-const Todo = require('../models').User;
+const User = require('../models').User;
 
 module.exports = {
     create(req, res) {
@@ -9,7 +9,7 @@ module.exports = {
             last_name,
             email,
             password,
-            settings,
+            settings: !!settings ? settings : [],
         })
         .then(user => res.status(201).send(user))
         .catch(error => res.status(400).send(error));

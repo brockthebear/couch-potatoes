@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(compression());
 
+require('./server/routes')(app);
 app.get("/", render);
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
-require('./server/routes')(app);
 app.get("*", render);
 
 module.exports = app;
