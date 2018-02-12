@@ -12,6 +12,8 @@
     "serve": "NODE_ENV=\"development\" node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
     "format": "prettier --write \"src/**/*.js\" \"server/*.js\"",
     "formatlist": "prettier --l \"src/**/*.js\" \"server/*.js\"",
+    "lint": "eslint --ignore-path .gitignore server/ && eslint --ignore-path .gitignore src/",
+    "fixcs": "eslint --fix --ignore-path .gitignore server/ && eslint --fix --ignore-path .gitignore src/",
     "test": "karma start --single-run",
     "test:serve": "karma start"
   },

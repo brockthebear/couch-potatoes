@@ -1,3 +1,9 @@
+/**
+ * The definition for the User model.
+ *
+ * @module server/models/user
+ */
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         first_name: {
@@ -18,15 +24,26 @@ module.exports = (sequelize, DataTypes) => {
         },
         settings: {
             type: DataTypes.JSON,
-            allowNull: true,
+            defaultValue: {
+                "netflix": false,
+                "amazon": false,
+            },
         },
+        // matches: {
+        //     type: DataTypes.ARRAY(DataTypes.INTEGER),
+        //     defaultValue: [],
+        // },
     });
 
     User.associate = models => {
         User.hasMany(models.Match, {
-            foreignKey: 'matchId',
-            as: 'matches',
+            foreignKey: 'user_id',
         });
+        // User.belongsTo(models.UserMatches, {
+        //     through: 'UserMatches',
+        //     as: 'user',
+        //     foreignKey: 'userId',
+        // });
     };
 
     return User;

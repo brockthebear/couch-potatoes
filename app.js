@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(compression());
 
+require('./server/routes')(app);
 app.get("/", render);
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
 app.get("*", render);
