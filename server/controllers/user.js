@@ -23,4 +23,22 @@ module.exports = {
         .then(users => res.status(200).send(users))
         .catch(error => res.status(400).send(error));
     },
+
+    findOne(req, res) {
+        return User.findById(req.params.user_id, {
+            include: [{
+                model: Match,
+            }],
+        })
+        .then(user => {
+            if (!user) {
+                return res.status(404).send({
+                    message: "User with ID: " + req.params.user_id + " does not exist.",
+                });
+            }
+
+            return res.status(200).send(user);
+        })
+        .catch(error => res.status(400).send(error));
+    },
 };
