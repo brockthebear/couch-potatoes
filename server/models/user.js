@@ -21,17 +21,21 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         },
         matches: {
-            type: sequelize.ARRAY(sequelize.TEXT),
+            type: DataTypes.ARRAY(DataTypes.INTEGER),
             defaultValue: [],
         },
     });
 
     User.associate = models => {
-        User.belongsToMany(models.UserMatches, {
-            through: 'UserMatches',
-            as: 'Users',
+        User.hasMany(models.Match, {
             foreignKey: 'userId',
+            as: 'userMatchIds',
         });
+        // User.belongsToMany(models.UserMatches, {
+        //     through: 'UserMatches',
+        //     as: 'Users',
+        //     foreignKey: 'userId',
+        // });
     };
 
     return User;

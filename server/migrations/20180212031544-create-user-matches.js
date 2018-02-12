@@ -2,15 +2,17 @@ module.exports = {
     up: (queryInterface, Sequelize) => queryInterface.createTable('UserMatches', {
         id: {
             allowNull: false,
-            autoIncrement: true,
             primaryKey: true,
+            autoIncrement: true,
             type: Sequelize.INTEGER,
         },
         user_id: {
             type: Sequelize.INTEGER,
+            allowNull: false,
         },
         matched_user_id: {
             type: Sequelize.INTEGER,
+            allowNull: false,
         },
         createdAt: {
             allowNull: false,

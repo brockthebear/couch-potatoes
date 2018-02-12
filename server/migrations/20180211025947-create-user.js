@@ -2,8 +2,8 @@ module.exports = {
     up: (queryInterface, Sequelize) => queryInterface.createTable('Users', {
         id: {
             allowNull: false,
-            autoIncrement: true,
             primaryKey: true,
+            autoIncrement: true,
             type: Sequelize.INTEGER,
         },
         first_name: {
@@ -26,7 +26,7 @@ module.exports = {
             type: Sequelize.JSON,
         },
         matches: {
-            type: Sequelize.ARRAY(Sequelize.TEXT),
+            type: Sequelize.ARRAY(Sequelize.INTEGER),
             defaultValue: [],
         },
         createdAt: {

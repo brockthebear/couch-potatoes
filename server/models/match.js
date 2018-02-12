@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Match.associate = models => {
-        Match.belongsToMany(models.UserMatches, {
-            through: 'UserMatches',
-            as: 'Matches',
-            foreignKey: 'matchId',
+        Match.belongsTo(models.User, {
+            foreignKey: 'userId',
+            onDelete: 'CASCADE',
         });
+        // Match.belongsToMany(models.UserMatches, {
+        //     through: 'UserMatches',
+        //     as: 'Matches',
+        //     foreignKey: 'matchId',
+        // });
     };
 
     return Match;

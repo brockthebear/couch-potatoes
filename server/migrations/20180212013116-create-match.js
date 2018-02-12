@@ -13,7 +13,7 @@ module.exports = {
             references: {
                 model: 'Users',
                 key: 'id',
-                as: 'matchId',
+                as: 'userId',
             },
         },
         recipient_id: {
