@@ -34,6 +34,9 @@ Object.keys(db).forEach(modelName => {
     }
 });
 
+// sequelize vs. capital S Sequelize
+// Pretty sure sequelize is the stuff we define for the app,
+// and "Sequelize" is the metadata stuff that the Sequelize package needs.
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
