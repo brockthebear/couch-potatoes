@@ -1,5 +1,5 @@
 module.exports = {
-    up: (queryInterface, Sequelize) => queryInterface.createTable('Matches', {
+    up: (queryInterface, Sequelize) => queryInterface.createTable('matches', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
             allowNull: true,
             onDelete: 'CASCADE',
             references: {
-                model: 'User',
+                model: 'Users',
                 key: 'id',
                 as: 'matchId',
             },
@@ -25,5 +25,5 @@ module.exports = {
             type: Sequelize.DATE,
         },
     }),
-    down: (queryInterface, Sequelize) => queryInterface.dropTable('Matches'),
+    down: (queryInterface, Sequelize) => queryInterface.dropTable('matches'),
 };
