@@ -68,7 +68,7 @@ export default class Loader extends Component {
         return (
             <div className='loader'>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                width={width} height={height} viewBox="0 0 24 30" xmlSpace="preserve" style={{ enableBackground:'new 0 0 50 50' }} {...rest}>
+                width={width} height={height} viewBox="0 0 24 30" xmlSpace="preserve" style={{ enableBackground: 'new 0 0 50 50' }} {...rest}>
                     <rect x="0" y="13" width="4" height="5">
                         <animate attributeName="height" attributeType="XML"
                             values="5;21;5"
