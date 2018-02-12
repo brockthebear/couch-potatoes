@@ -18,12 +18,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         settings: {
             type: DataTypes.JSON,
-            allowNull: true,
+            defaultValue: {
+                "netflix": false,
+                "amazon": false,
+            },
         },
-        matches: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
-            defaultValue: [],
-        },
+        // matches: {
+        //     type: DataTypes.ARRAY(DataTypes.INTEGER),
+        //     defaultValue: [],
+        // },
     });
 
     User.associate = models => {
