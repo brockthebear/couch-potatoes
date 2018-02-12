@@ -1,7 +1,7 @@
 const user = require('./user');
-// const matches = require('./matches');
+const match = require('./match');
 
 module.exports = {
     user,
-    // matches,
+    match,
 };
