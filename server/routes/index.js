@@ -6,8 +6,8 @@ module.exports = app => {
         message: 'Welcome to the user api.',
     }));
 
-    app.post('/api/user', userController.create);
-    app.get('/api/users', userController.list);
+    app.post('/api/user/_create', userController.create);
+    app.get('/api/users/list', userController.list);
 
     app.post('/api/match/:user_id/_create', matchController.create);
 };

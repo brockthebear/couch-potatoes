@@ -1,4 +1,5 @@
 const User = require('../models').User;
+const Match = require('../models').Match;
 
 module.exports = {
     create(req, res) {
@@ -14,8 +15,12 @@ module.exports = {
     },
 
     list(req, res) {
-        return User.all()
-            .then(users => res.status(200).send(users))
-            .catch(error => res.status(400).send(error));
+        return User.findAll({
+            include: [{
+                model: Match,
+            }],
+        })
+        .then(users => res.status(200).send(users))
+        .catch(error => res.status(400).send(error));
     },
 };

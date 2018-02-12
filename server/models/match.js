@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Match.associate = models => {
         Match.belongsTo(models.User, {
-            foreignKey: 'userId',
+            foreignKey: 'user_id',
             onDelete: 'CASCADE',
         });
         // Match.belongsToMany(models.UserMatches, {
