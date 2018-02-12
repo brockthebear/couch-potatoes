@@ -19,6 +19,8 @@ if (config.use_env_variable) {
     sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+
+// Add all of our models to our db object.
 fs.readdirSync(__dirname)
     .filter(file =>
         (file.indexOf('.') !== 0) &&
@@ -28,6 +30,8 @@ fs.readdirSync(__dirname)
         db[model.name] = model;
     });
 
+// Loop through all of the models that we just added to our db.
+// If the model has an 'associate' function defined, execute the function.
 Object.keys(db).forEach(modelName => {
     if (db[modelName].associate) {
         db[modelName].associate(db);
