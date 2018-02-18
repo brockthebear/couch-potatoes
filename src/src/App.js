@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './couch.svg';
 import './App.css';
-import Home from './components/Home';
 import Card from './components/Card';
 
 class App extends Component {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { CenterLoader } from './Loader';
 import Card from './Card';
 
 export default class Home extends Component {
