@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import querystring from 'querystring';
 import SwipeCard from './SwipeCard';
+import fixtures from '../utils/fixtures.js';
+
 
 const query = querystring.parse(window.location.search.slice(1));
 
 const numberOfSlides = parseInt(query.slidesNum, 10) || 20;
-const paneNodes = Array.apply(null, Array(numberOfSlides)).map((_, i) => {
+const paneNodes = Array.apply(null, Array(fixtures.users.length)).map((_, i) => {
     return (
         <div key={i}>
-            <div className="item">{i}</div>
+            <div className="item">{fixtures.users[i].name}</div>
         </div>
     );
 });
@@ -25,8 +27,8 @@ const swipeOptions = {
     },
     transitionEnd() {
         console.log('ended transition');
-    }
-}
+    },
+};
 
 export default class Card extends Component {
     constructor(props, context) {
@@ -34,6 +36,14 @@ export default class Card extends Component {
 
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+        this.state = {
+            users: fixtures.users,
+            preferences: {
+                netflix: true,
+                amazon: true,
+                hulu: false,
+            },
+        };
     }
 
     next() {
@@ -48,7 +58,6 @@ export default class Card extends Component {
         return (
             <div className="center">
                 <h1>Couch Potatoes App</h1>
-                <h2>Open this page from a mobile device.</h2>
 
                 <SwipeCard ref={reactSwipe => this.reactSwipe = reactSwipe} className="mySwipe" swipeOptions={swipeOptions}>
                     { paneNodes }

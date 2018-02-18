@@ -93,7 +93,7 @@ export default class SwipeCard extends Component {
         return (
             <div ref={container => this.container = container} id={id} className={`react-swipe-container ${className}`} style={style.container}>
                 <div style={style.wrapper}>
-                    {React.Children.map(children, (child) => {
+                    {React.Children.map(children, child => {
                         if (!child) {
                             return null;
                         }
