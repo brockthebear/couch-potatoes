@@ -1,9 +1,0 @@
-node_modules*
-npm-debug.log
-react-backend
-.DS_Store
-.env
-dist
-!dist/index.html
-server/build
-*.scssc
