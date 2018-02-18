@@ -1,28 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import querystring from 'querystring';
 import SwipeCard from './SwipeCard';
 
-// if (!!isClient) {
-//     const query = querystring.parse(window.location.search.slice(1));
-// } else {
-//     const query = {
-//         slidesNum: 20,
-//         startSlide: 0,
-//         auto: 0,
-//         speed: 300,
-//         disableScroll: false,
-//         continuous: true,
-//     };
-// }
-
-const query = {
-    slidesNum: 20,
-    startSlide: 0,
-    auto: 0,
-    speed: 300,
-    disableScroll: false,
-    continuous: true,
-};
+const query = querystring.parse(window.location.search.slice(1));
 
 const numberOfSlides = parseInt(query.slidesNum, 10) || 20;
 const paneNodes = Array.apply(null, Array(numberOfSlides)).map((_, i) => {

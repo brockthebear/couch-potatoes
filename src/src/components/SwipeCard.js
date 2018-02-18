@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Swipe from 'swipe-js-iso';
 
 export default class SwipeCard extends Component {
