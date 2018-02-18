@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { CenterLoader } from './Loader';
+import Card from './Card';
 
 export default class Home extends Component {
     static propTypes = {
@@ -9,6 +10,7 @@ export default class Home extends Component {
 
     render() {
         console.log('render home');
+        console.log(this.props.children);
 
         return (
             <div>
@@ -16,7 +18,7 @@ export default class Home extends Component {
 
                 <div className="application">
                     <div className="container">
-                        { this.props.children }
+                        <Card />
                     </div>
 
                     <div className="container">

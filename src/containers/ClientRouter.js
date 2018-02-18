@@ -17,6 +17,7 @@ export default class ClientRouter extends Component {
     }
 
     render() {
+        console.log('client router');
         return (
             <Router history={browserHistory} onUpdate={this.onUpdate} render={applyRouterMiddleware()}>
                 {TopLevelRoute}

@@ -9,6 +9,7 @@ export default class ServerRouter extends Component {
     };
 
     render() {
+        console.log('server router!');
         const { location } = this.context;
         let router = null;
 

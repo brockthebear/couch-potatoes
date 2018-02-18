@@ -8,6 +8,7 @@ import sections from "../utils/Sections";
 
 const routes = sections.map(section => {
     const { slug, componentName } = section;
+    console.log('section: ', section);
     const component = createProxyComponent(componentName);
 
     return <Route key={slug} path={slug} component={component} />;
