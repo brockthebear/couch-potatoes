@@ -59,17 +59,19 @@ h2 {
     overflow: hidden;
     width: 350px;
     outline: 1px solid black;
-    background-size: 175px 175px;
-    background-repeat: no-repeat;
-    background-position: center top;
-    /* border: 0;
-    border-radius: 87.5px; */
 }
 
 .swipeItem-content {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+.swipeItem-content img {
+    width: 175px;
+    height: 175px;
+    border: 0;
+    border-radius: 50%;
 }
 
 .swipeItem-content .name {
@@ -94,31 +96,3 @@ h2 {
     border: none;
     outline: 1px solid black;
 }
-
-/* .swipeItem-0 {
-    background-image: url('assets/lego0.jpg');
-}
-.swipeItem-1 {
-    background-image: url('assets/lego1.jpg');
-}
-.swipeItem-2 {
-    background-image: url('assets/lego2.jpg');
-}
-.swipeItem-3 {
-    background-image: url('assets/lego3.jpg');
-}
-.swipeItem-4 {
-    background-image: url('assets/lego4.jpg');
-}
-.swipeItem-5 {
-    background-image: url('assets/lego5.jpg');
-}
-.swipeItem-6 {
-    background-image: url('assets/lego6.jpg');
-}
-.swipeItem-7 {
-    background-image: url('assets/lego7.jpg');
-}
-.swipeItem-8 {
-    background-image: url('assets/lego8.jpg');
-} */

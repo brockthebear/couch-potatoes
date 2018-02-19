@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import fixtures from '../utils/fixtures.js';
 import * as images from '../assets';
-console.log(images);
 
 const TRUE = 1;
 const FALSE = -1;
@@ -119,7 +118,7 @@ export default class SwipeList extends Component {
                 <ul className="swipeList">
                     {users.map((user, i) => {
                         let imageUrl = images['image'+i];
-                        console.log(imageUrl);
+
                         return (
                             <Card className={`center swipeItem swipeItem-${i}`} key={`swipeItem-${i}`} onRemoval={() => this.removeItem(i)}>
                                 <img src={imageUrl} />
