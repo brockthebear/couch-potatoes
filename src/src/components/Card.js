@@ -117,11 +117,9 @@ export default class SwipeList extends Component {
                 </div>
                 <ul className="swipeList">
                     {users.map((user, i) => {
-                        let imageUrl = images['image'+i];
-
                         return (
                             <Card className={`center swipeItem swipeItem-${i}`} key={`swipeItem-${i}`} onRemoval={() => this.removeItem(i)}>
-                                <img src={imageUrl} />
+                                <img src={user.image} />
                                 <div className="name">
                                     {user.name}
                                 </div>

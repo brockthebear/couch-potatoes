@@ -37,23 +37,6 @@ h2 {
     margin:10px;
 }
 
-.mySwipe {
-    margin: 0 auto;
-}
-.mySwipe .item {
-    font-weight: bold;
-    color: #14ADE5;
-    font-size: 20px;
-    text-align: center;
-    margin: 10px;
-    padding: 100px 10px;
-    box-shadow: 0 1px #EBEBEB;
-    background: #fff;
-    border-radius: 5px;
-    border: 1px solid;
-    border-color: #E5E5E5 #D3D3D3 #B9C1C6;
-}
-
 .swipeItem {
     position: relative;
     overflow: hidden;
@@ -65,13 +48,15 @@ h2 {
     position: absolute;
     width: 100%;
     height: 100%;
+    background: mintcream;
 }
 
 .swipeItem-content img {
-    width: 175px;
-    height: 175px;
+    width: 50%;
+    height: 50%;
     border: 0;
     border-radius: 50%;
+    padding: 10px;
 }
 
 .swipeItem-content .name {
