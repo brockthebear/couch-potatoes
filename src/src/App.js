@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Card, { SwipeList } from './components/Card';
+import { SwipeList } from './components/Card';
 
 class App extends Component {
     render() {

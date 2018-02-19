@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SwipeCard from './SwipeCard';
 import fixtures from '../utils/fixtures.js';
 
 const TRUE = 1;
@@ -12,24 +11,8 @@ export default class Card extends Component {
     constructor(props) {
         super(props);
 
-        // this.next = this.next.bind(this);
-        // this.prev = this.prev.bind(this);
-        // this.swiping = this.swiping.bind(this);
-        // this.swiped = this.swiped.bind(this);
-        // this.swipingLeft = this.swipingLeft.bind(this);
-        // this.swipedUp = this.swipedUp.bind(this);
-        // this.onSwiped = this.onSwiped.bind(this);
-
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.state = {
-            users: fixtures.users,
-            userIdx: 0,
-            matchedUsers: [],
-            preferences: {
-                netflix: TRUE,
-                amazon: TRUE,
-                hulu: FALSE,
-            },
             left: 0,
             originalOffset: 0,
             velocity: 0,
@@ -157,50 +140,9 @@ export default class Card extends Component {
         this.reactSwipe.prev();
     }
 
-    buildUsers() {
-        const { preferences } = this.state;
-
-        const users = fixtures.users.map((user, i) => {
-            for (var setting in preferences) {
-                if (!!user[setting] && (preferences[setting] === TRUE)) {
-                    return user;
-                }
-            }
-        });
-
-        return users.filter(user => user != undefined);
-    }
-
-    handleChange(e) {
-        let target = e.target.value;
-
-        this.setState(prevState => {
-            let newPrefs = Object.assign(
-                prevState.preferences,
-                {[target]: prevState.preferences[target] * -1},
-            );
-
-            let out = {
-                preferences: newPrefs,
-                ...prevState,
-            };
-
-            return out;
-        });
-    }
-
     render() {
-        const { preferences } = this.state;
-        const users = this.buildUsers();
-
         return (
             <div>
-                <div className="center prefs">
-                    <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
-                    <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
-                    <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
-                </div>
-
                 <li
                     className="center swipeItem"
                     style={{height: this.state.height + 'px', transition: 'height 250ms ease-in-out'}}
@@ -237,13 +179,53 @@ export class SwipeList extends Component {
 
         this.removeItem = this.removeItem.bind(this);
         this.addImage = this.addImage.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
         this.state = {
             counter: 1,
             items: {
                 [0]: 'http://lorempixel.com/350/350/',
             },
+            users: fixtures.users,
+            matchedUsers: [],
+            preferences: {
+                netflix: TRUE,
+                amazon: TRUE,
+                hulu: FALSE,
+            },
         };
+    }
+
+    buildUsers() {
+        const { preferences } = this.state;
+
+        const users = fixtures.users.map((user, i) => {
+            for (var setting in preferences) {
+                if (!!user[setting] && (preferences[setting] === TRUE)) {
+                    return user;
+                }
+            }
+        });
+
+        return users.filter(user => user != undefined);
+    }
+
+    handleChange(e) {
+        let target = e.target.value;
+
+        this.setState(prevState => {
+            let newPrefs = Object.assign(
+                prevState.preferences,
+                {[target]: prevState.preferences[target] * -1},
+            );
+
+            let out = {
+                preferences: newPrefs,
+                ...prevState,
+            };
+
+            return out;
+        });
     }
 
     addImage() {
@@ -268,24 +250,32 @@ export class SwipeList extends Component {
     }
 
     render() {
-        console.log(this.state);
+        const { preferences } = this.state;
+
         return (
-            <ul className="swipeList">
-                {Object.keys(this.state.items).map(itemKey => {
-                    return (
-                        <Card key={`swipeItem-${itemKey}`} onRemoval={() => this.removeItem(itemKey)}>
-                            <img src={this.state.items[itemKey]} />
-                        </Card>
-                    );
-                }
+            <div>
+                <div className="center prefs">
+                    <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
+                    <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
+                    <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
+                </div>
+                <ul className="swipeList">
+                    {Object.keys(this.state.items).map(itemKey => {
+                        return (
+                            <Card key={`swipeItem-${itemKey}`} onRemoval={() => this.removeItem(itemKey)}>
+                                <img src={this.state.items[itemKey]} />
+                            </Card>
+                        );
+                    }
                 )}
                 <button
                     className="swipeList-addButton"
                     onClick={() => this.addImage()}
-                >
-            Add image...
-                </button>
-            </ul>
+                    >
+                        Add image...
+                    </button>
+                </ul>
+            </div>
         );
     }
 }
