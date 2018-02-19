@@ -23,8 +23,8 @@ const fixtures = {
             netflix: false,
             amazon: false,
             hulu: true,
-        }
-    ]
-}
+        },
+    ],
+};
 
 export default fixtures;
