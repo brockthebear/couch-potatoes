@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import querystring from 'querystring';
+import Swipeable from 'react-swipeable';
 import SwipeCard from './SwipeCard';
 import fixtures from '../utils/fixtures.js';
 
 const TRUE = 1;
 const FALSE = -1;
+
+const RIGHT = '-1';
+const LEFT = '+1';
 
 export default class Card extends Component {
     constructor(props, context) {
@@ -13,9 +16,15 @@ export default class Card extends Component {
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.swiping = this.swiping.bind(this);
+        this.swiped = this.swiped.bind(this);
+        this.swipingLeft = this.swipingLeft.bind(this);
+        this.swipedUp = this.swipedUp.bind(this);
+        this.onSwiped = this.onSwiped.bind(this);
 
         this.state = {
             users: fixtures.users,
+            userIdx: 0,
             matchedUsers: [],
             preferences: {
                 netflix: TRUE,
@@ -66,6 +75,66 @@ export default class Card extends Component {
         return users.filter(user => user != undefined);
     }
 
+    swiping(e, deltaX, deltaY, absX, absY, velocity) {
+        console.log("You're Swiping...", e, deltaX, deltaY, absX, absY, velocity);
+    }
+
+    swipingLeft(e, absX) {
+        console.log("You're Swiping to the Left...", e, absX);
+    }
+
+    swiped(e, deltaX, deltaY, isFlick, velocity) {
+        console.log("You Swiped...", e, deltaX, deltaY, isFlick, velocity);
+    }
+
+    swipedUp(e, deltaY, isFlick) {
+        console.log("You Swiped Up...", e, deltaY, isFlick);
+    }
+
+    onSwiped(direction) {
+        const change = direction === RIGHT ? RIGHT : LEFT;
+        const adjustedIdx = this.state.userIdx + Number(change);
+        console.log('adjusted idx: ', adjustedIdx);
+        let newIdx;
+        if (adjustedIdx >= this.state.users.length) {
+            newIdx = 0;
+        } else if (adjustedIdx < 0) {
+            newIdx = this.state.users.length - 1;
+        } else {
+            newIdx = adjustedIdx;
+        }
+
+        this.setState(prevState => {
+            return {
+                userIdx: newIdx,
+                ...prevState,
+            };
+        });
+    }
+
+    // render() {
+    //     const { userIdx = 0 } = this.state;
+    //     console.log(this.state);
+    //
+    //     return (
+    //         <div className="swipeContainer">
+    //             <div>User: {userIdx + 1}</div>
+    //             <Swipeable
+    //                 className="swipe"
+    //                 trackMouse
+    //                 style={{ touchAction: 'none' }}
+    //                 preventDefaultTouchmoveEvent
+    //                 onSwipedLeft={() => this.onSwiped(LEFT)}
+    //                 onSwipedRight={() => this.onSwiped(RIGHT)}>
+    //                     <div>
+    //                         <button onClick={() => this.onSwiped(LEFT)}>Left</button>
+    //                         <button onClick={() => this.onSwiped(RIGHT)}>Right</button>
+    //                     </div>
+    //                 </Swipeable>
+    //         </div>
+    //     );
+    // }
+
     render() {
         const { preferences } = this.state;
         const users = this.buildUsers();
@@ -94,6 +163,14 @@ export default class Card extends Component {
                     <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
                     <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
                 </div>
+
+                <Swipeable
+                    onSwiping={this.swiping}
+                    onSwipingLeft={this.swipingLeft}
+                    onSwiped={this.swiped}
+                    onSwipedUp={this.swipedUp}>
+                    Swipe me!
+                </Swipeable>
 
                 <SwipeCard ref={reactSwipe => this.reactSwipe = reactSwipe} className="mySwipe" swipeOptions={swipeOptions}>
                     <UserCards users={users} />
