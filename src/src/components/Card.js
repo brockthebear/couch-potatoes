@@ -3,32 +3,6 @@ import querystring from 'querystring';
 import SwipeCard from './SwipeCard';
 import fixtures from '../utils/fixtures.js';
 
-const query = querystring.parse(window.location.search.slice(1));
-
-const numberOfSlides = parseInt(query.slidesNum, 10) || 20;
-const paneNodes = Array.apply(null, Array(fixtures.users.length)).map((_, i) => {
-    return (
-        <div key={i}>
-            <div className="item">{fixtures.users[i].name}</div>
-        </div>
-    );
-});
-
-const startSlide = parseInt(query.startSlide, 10) || 0;
-const swipeOptions = {
-    startSlide: startSlide < paneNodes.length && startSlide >= 0 ? startSlide : 0,
-    auto: parseInt(query.auto, 10) || 0,
-    speed: parseInt(query.speed, 10) || 300,
-    disableScroll: query.disableScroll === 'true',
-    continuous: query.continuous === 'true',
-    callback() {
-        console.log('slide changed');
-    },
-    transitionEnd() {
-        console.log('ended transition');
-    },
-};
-
 const TRUE = 1;
 const FALSE = -1;
 
@@ -42,10 +16,11 @@ export default class Card extends Component {
 
         this.state = {
             users: fixtures.users,
+            matchedUsers: [],
             preferences: {
-                "netflix": TRUE,
-                "amazon": FALSE,
-                "hulu": FALSE,
+                netflix: TRUE,
+                amazon: TRUE,
+                hulu: FALSE,
             },
         };
     }
@@ -64,11 +39,12 @@ export default class Card extends Component {
         this.setState(prevState => {
             let newPrefs = Object.assign(
                 prevState.preferences,
-                {[target]: prevState.preferences[target] * - 1},
+                {[target]: prevState.preferences[target] * -1},
             );
 
             let out = {
                 users: prevState.users,
+                matchedUsers: prevState.matchedUsers,
                 preferences: newPrefs,
             };
 
@@ -76,22 +52,51 @@ export default class Card extends Component {
         });
     }
 
+    buildUsers() {
+        const { preferences } = this.state;
+
+        const users = fixtures.users.map((user, i) => {
+            for (var setting in preferences) {
+                if (!!user[setting] && (preferences[setting] === TRUE)) {
+                    return user;
+                }
+            }
+        });
+
+        return users.filter(user => user != undefined);
+    }
+
     render() {
         const { preferences } = this.state;
-        console.log(this.state);
+        const users = this.buildUsers();
+
+        const startSlide = 0;
+        const swipeOptions = {
+            startSlide: 0,
+            auto: 0,
+            speed: 300,
+            disableScroll: true,
+            continuous: false,
+            callback() {
+                console.log('slide changed');
+            },
+            transitionEnd() {
+                console.log('ended transition');
+            },
+        };
 
         return (
             <div className="center">
                 <h1>Couch Potatoes App</h1>
 
                 <div className="center prefs">
-                        <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
-                        <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
-                        <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
+                    <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
+                    <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
+                    <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
                 </div>
 
                 <SwipeCard ref={reactSwipe => this.reactSwipe = reactSwipe} className="mySwipe" swipeOptions={swipeOptions}>
-                    { paneNodes }
+                    <UserCards users={users} />
                 </SwipeCard>
 
                 <div>
@@ -101,4 +106,15 @@ export default class Card extends Component {
             </div>
         );
     }
+}
+
+
+function UserCards({ users }) {
+    return users.map((user, i) => {
+        return (
+            <div key={i}>
+                <div className="item">{user.name}</div>
+            </div>
+        );
+    });
 }
