@@ -12,6 +12,7 @@ export default class SwipeList extends Component {
         this.removeItem = this.removeItem.bind(this);
         this.addImage = this.addImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.checkboxes = this.checkboxes.bind(this);
 
         this.state = {
             counter: 1,
@@ -104,17 +105,41 @@ export default class SwipeList extends Component {
         // this.addImage();
     }
 
-    render() {
+    checkboxes() {
         const { preferences } = this.state;
+
+        return (
+            <div className="center prefs">
+                <ul>
+                    <li>
+                        <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
+                    </li>
+                    <li>
+                        <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
+                    </li>
+                </ul>
+            </div>
+        );
+    }
+
+    render() {
         const users = this.filterUsers();
+
+        if (!users.length) {
+            return (
+                <div>
+                    { this.checkboxes() }
+                    <h1>No users found!</h1>
+                </div>
+            )
+        }
 
         return (
             <div>
-                <div className="center prefs">
-                    <label><input type="checkbox" value="netflix" checked={preferences.netflix === TRUE} onChange={this.handleChange} />Netflix</label>
-                    <label><input type="checkbox" value="amazon" checked={preferences.amazon === TRUE} onChange={this.handleChange} />Amazon</label>
-                    <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
-                </div>
+                { this.checkboxes() }
                 <ul className="swipeList">
                     {users.map((user, i) => {
                         return (
@@ -128,12 +153,12 @@ export default class SwipeList extends Component {
                                 </div>
                             </Card>
                         );
-                    }
-                )}
-                <button
-                    className="swipeList-addButton"
-                    onClick={() => this.addImage()}>
-                        Add User
+                    })}
+
+                    <button
+                        className="swipeList-addButton"
+                        onClick={() => this.addImage()}>
+                            Add User
                     </button>
                 </ul>
             </div>
@@ -239,7 +264,7 @@ class Card extends Component {
 
     handleTouchStart(touchStartEvent) {
         touchStartEvent.preventDefault();
-        this.handleMotoinStart(touchStartEvent.targetTouches[0].clientX);
+        this.handleMotionStart(touchStartEvent.targetTouches[0].clientX);
     }
 
     handleTouchMove(touchMoveEvent) {
