@@ -11,20 +11,12 @@ const fixtures = {
             bio: "I bring the Netflix and you bring the chill.",
         },
         {
-            name: "Tony",
-            netflix: true,
-            amazon: true,
-            hulu: true,
-            image: images.image1,
-            bio: "They call me Holy Tony because I got Netflix, Hulu, and Amazon Prime: The Holy Trinity.",
-        },
-        {
             name: "Steve",
             netflix: false,
             amazon: true,
             hulu: false,
             image: images.image2,
-            bio: "My ex finally realized that I was still using her Netflix login so I'm lookin' to make a trade. Your Netflix login for my Amazon Prime creds.",
+            bio: "My ex cut me off after she realized that I was still using her Netflix login so I'm lookin' to make a trade. Your Netflix login for my Amazon Prime creds.",
         },
         {
             name: "Nick",
@@ -41,6 +33,14 @@ const fixtures = {
             hulu: false,
             image: images.image4,
             bio: "Ya know, Netflix gets all the hype but I'd argue that Amazon Prime has become the top choice as of late. I am definitely not Jeff Bezos.",
+        },
+        {
+            name: "Tony",
+            netflix: true,
+            amazon: true,
+            hulu: true,
+            image: images.image1,
+            bio: "They call me Holy Tony because I got Netflix, Hulu, and Amazon Prime: The Holy Trinity.",
         },
         {
             name: "Bucky",
