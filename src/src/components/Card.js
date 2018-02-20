@@ -123,6 +123,9 @@ export default class SwipeList extends Component {
                                 <div className="name">
                                     {user.name}
                                 </div>
+                                <div className="bio">
+                                    {user.bio}
+                                </div>
                             </Card>
                         );
                     }
@@ -144,6 +147,7 @@ class Card extends Component {
 
         this.state = {
             left: 0,
+            right: 0,
             originalOffset: 0,
             velocity: 0,
             timeOfLastDragEvent: 0,
@@ -160,7 +164,7 @@ class Card extends Component {
     }
 
     animateSlidingToZero() {
-        let { left, velocity, beingTouched } = this.state;
+        let { left, right, velocity, beingTouched } = this.state;
 
         if (!beingTouched && left < -0.01) {
             velocity += 10 * 0.033;
@@ -214,6 +218,7 @@ class Card extends Component {
             } else if (deltaX > 0) {
                 deltaX = 0;
             }
+            console.log('this.state.left: ', this.state.left);
             this.setState({
                 left: deltaX,
                 velocity,
