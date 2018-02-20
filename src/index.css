@@ -43,6 +43,15 @@ a:hover {
     list-style-type: none;
 }
 
+.center p {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    top: 100%;
+    left: 100%;
+    transform: translate3d(-98%, 0, 0);
+}
+
 h1 {
     font-size: 34px;
     margin: 50px auto 20px;

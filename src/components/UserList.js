@@ -82,6 +82,7 @@ export default class UserList extends Component {
                         <label><input type="checkbox" value="hulu" checked={preferences.hulu === TRUE} onChange={this.handleChange} />Hulu</label>
                     </li>
                 </ul>
+                <p>Swipe left to move down your list of matches!</p>
             </div>
         );
     }
