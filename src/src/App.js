@@ -20,7 +20,7 @@ class App extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 copyright">
-                                <span>Made with love by Brock.</span>
+                                <span> Made with ♥ by <a href="https://twitter.com/brockthebear" target="_blank">@brockthebear</a>.</span>
                             </div>
                         </div>
                     </div>

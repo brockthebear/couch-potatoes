@@ -10,15 +10,10 @@ export default class SwipeList extends Component {
         super(props);
 
         this.removeItem = this.removeItem.bind(this);
-        this.addImage = this.addImage.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.checkboxes = this.checkboxes.bind(this);
 
         this.state = {
-            counter: 1,
-            items: {
-                [0]: 'http://lorempixel.com/350/350/',
-            },
             users: fixtures.users,
             matchedUsers: [],
             preferences: {
@@ -32,32 +27,15 @@ export default class SwipeList extends Component {
     filterUsers() {
         const { preferences } = this.state;
 
-        // const userList = Object.keys(users).forEach(userKey => {
-        //     console.log(users[userKey]);
-        //     for (var setting in preferences) {
-        //         if (!!users[userKey][setting] && (preferences[setting] === TRUE)) {
-        //             return users[userKey];
-        //         }
-        //     }
-        // });
-        // console.log(userList.filter(user => user != undefined));
-
         const users = fixtures.users.map(user => {
             for (var setting in preferences) {
                 if (!!user[setting] && (preferences[setting] === TRUE)) {
                     return user;
                 }
             }
-        });
+        }).filter(user => user !== undefined);
 
-        // this.setState(prevState => {
-        //     return {
-        //         users: users.filter(user => user != undefined),
-        //         ...prevState,
-        //     };
-        // });
-
-        return users.filter(user => user != undefined);
+        return users;
     }
 
     handleChange(e) {
@@ -75,16 +53,6 @@ export default class SwipeList extends Component {
             };
 
             return out;
-        });
-    }
-
-    addImage() {
-        this.setState({
-            counter: this.state.counter + 1,
-            items: {
-                ...this.state.items,
-                [this.state.counter]: 'http://lorempixel.com/350/350/',
-            },
         });
     }
 
@@ -154,12 +122,6 @@ export default class SwipeList extends Component {
                             </Card>
                         );
                     })}
-
-                    <button
-                        className="swipeList-addButton"
-                        onClick={() => this.addImage()}>
-                            Add User
-                    </button>
                 </ul>
             </div>
         );
@@ -170,9 +132,16 @@ class Card extends Component {
     constructor(props) {
         super(props);
 
+        this.handleTouchStart = this.handleTouchStart.bind(this);
+        this.handleTouchEnd = this.handleTouchEnd.bind(this);
+        this.handleTouchMove = this.handleTouchMove.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+
         this.state = {
             left: 0,
-            right: 0,
             originalOffset: 0,
             velocity: 0,
             timeOfLastDragEvent: 0,
@@ -264,7 +233,7 @@ class Card extends Component {
 
     handleTouchStart(touchStartEvent) {
         touchStartEvent.preventDefault();
-        this.handleMotionStart(touchStartEvent.targetTouches[0].clientX);
+        this.handleStart(touchStartEvent.targetTouches[0].clientX);
     }
 
     handleTouchMove(touchMoveEvent) {
@@ -298,11 +267,11 @@ class Card extends Component {
                 <li
                     className={this.props.className}
                     style={{height: this.state.height + 'px', transition: 'height 250ms ease-in-out'}}
-                    onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
-                    onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
+                    onTouchStart={this.handleTouchStart}
+                    onTouchMove={this.handleTouchMove}
                     onTouchEnd={() => this.handleTouchEnd()}
-                    onMouseDown={mouseDownEvent => this.handleMouseDown(mouseDownEvent)}
-                    onMouseMove={mouseMoveEvent => this.handleMouseMove(mouseMoveEvent)}
+                    onMouseDown={this.handleMouseDown}
+                    onMouseMove={this.handleMouseMove}
                     onMouseUp={() => this.handleMouseUp()}
                     onMouseLeave={() => this.handleMouseLeave()}>
                     <div
