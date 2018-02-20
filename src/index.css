@@ -1,0 +1,121 @@
+hmtl, body {
+    background: #f3f3f3;
+    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    -webkit-text-size-adjust: none;
+}
+
+.application {
+  text-align: center;
+}
+
+.logo {
+  height: 150px;
+}
+
+.header {
+  background-color: #222;
+  width: 100%;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+.intro {
+  font-size: large;
+}
+
+a {
+    color: #14ADE5;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.prefs ul {
+    list-style-type: none;
+}
+
+h1 {
+    font-size: 34px;
+    margin: 50px auto 20px;
+    color: #212121;
+}
+
+h2 {
+    font-size: 14px;
+    color: #3c3c3c;
+    margin:10px;
+}
+
+.swipeList {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.swipeList div {
+    padding: 5px 0 5px 0;
+}
+
+.swipeItem {
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    outline: 1px solid black;
+}
+
+.swipeItem-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: mintcream;
+    overflow: hidden;
+}
+
+.swipeItem-content img {
+    width: 50%;
+    height: 50%;
+    border: 0;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.swipeItem-content .name {
+    top: 50%;
+    font-size: 38px;
+    color: #2c2e31;
+    background: transparent;
+    margin: 5px;
+}
+
+.swipeItem-content .bio {
+    top: 100%;
+    font-size: 16px;
+    color: #2c2e31;
+    background: transparent;
+    margin: 0 auto;
+    word-wrap: break-word;
+}
+
+.swipeList {
+    list-style-type: none;
+}
+
+.swipeList-addButton {
+    font-size: 30px;
+    text-align: center;
+    width: 350px;
+    height: 65px;
+    padding: auto;
+    background-color: white;
+    border: none;
+    outline: 1px solid black;
+}
