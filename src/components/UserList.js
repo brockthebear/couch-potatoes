@@ -15,7 +15,6 @@ export default class UserList extends Component {
 
         this.state = {
             users: fixtures.users,
-            matchedUsers: [],
             preferences: {
                 netflix: TRUE,
                 amazon: TRUE,
@@ -96,7 +95,7 @@ export default class UserList extends Component {
                     { this.checkboxes() }
                     <h1>No users found!</h1>
                 </div>
-            )
+            );
         }
 
         return (

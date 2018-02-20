@@ -3,28 +3,28 @@ import * as images from '../assets';
 const fixtures = {
     "users": [
         {
-            name: "Tony",
+            name: "Bruce",
             netflix: true,
             amazon: false,
             hulu: false,
             image: images.image0,
-            bio: "Snare ultimate eternal-return pious merciful justice convictions sea superiority free. Sexuality philosophy love derive burying enlightenment marvelous.",
+            bio: "I bring the Netflix and you bring the chill.",
         },
         {
-            name: "Bruce",
+            name: "Tony",
             netflix: true,
             amazon: true,
             hulu: true,
             image: images.image1,
-            bio: "Oneself ideal against ubermensch strong mountains gains transvaluation eternal-return convictions merciful decrepit endless selfish. Free will faith.",
+            bio: "They call me Holy Tony because I got Netflix, Hulu, and Amazon Prime: The Holy Trinity.",
         },
         {
             name: "Steve",
             netflix: false,
             amazon: true,
-            hulu: true,
+            hulu: false,
             image: images.image2,
-            bio: "Christianity oneself abstract christian ultimate ultimate hatred christianity decieve right fearful virtues truth. Morality mountains intentions.",
+            bio: "My ex finally realized that I was still using her Netflix login so I'm lookin' to make a trade. Your Netflix login for my Amazon Prime creds.",
         },
         {
             name: "Nick",
@@ -32,7 +32,7 @@ const fixtures = {
             amazon: false,
             hulu: true,
             image: images.image3,
-            bio: "Play joy enlightenment hatred sea ultimate pious dead ocean overcome. Morality aversion decrepit strong morality burying ascetic decieve.",
+            bio: "Anybody looking for a Hulu watching buddy?....Hello? Anybody? Please?",
         },
         {
             name: "Peter",
@@ -40,7 +40,7 @@ const fixtures = {
             amazon: true,
             hulu: false,
             image: images.image4,
-            bio: "Will philosophy convictions oneself inexpedient justice joy sea transvaluation holiest suicide marvelous contradict. Depths endless.",
+            bio: "Ya know, Netflix gets all the hype but I'd argue that Amazon Prime has become the top choice as of late. I am definitely not Jeff Bezos.",
         },
         {
             name: "Bucky",
@@ -48,7 +48,7 @@ const fixtures = {
             amazon: false,
             hulu: true,
             image: images.image5,
-            bio: "Faithful truth mountains fearful moral joy love reason aversion moral selfish prejudice. Sexuality endless gains.",
+            bio: "I have Netflix and Hulu! Well, my parents have Netflix and Hulu, but same diff. I also live at home with them. I hope that's cool. I'm 13.",
         },
         {
             name: "Logan",
@@ -56,7 +56,7 @@ const fixtures = {
             amazon: true,
             hulu: true,
             image: images.image6,
-            bio: "Snare evil enlightenment against snare suicide dead horror deceptions decieve burying victorious truth. Of contradict.",
+            bio: "I thought this was Tinder 😭",
         },
     ],
 };
