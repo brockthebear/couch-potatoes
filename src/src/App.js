@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SwipeList from './components/Card';
+import UserList from './components/UserList';
 
 class App extends Component {
     render() {
@@ -14,7 +14,7 @@ class App extends Component {
 
                 <div className="container">
                     <div className="card">
-                        <SwipeList />
+                        <UserList />
                     </div>
 
                     <div className="container">
