@@ -1,3 +1,10 @@
+/**
+ * This is essentially the "User Profile" section of the app.
+ * Each card displays a user's data to their match.
+ *
+ * @module components/Card
+ */
+
 import React, { Component } from 'react';
 
 export default class UserCard extends Component {
@@ -29,6 +36,9 @@ export default class UserCard extends Component {
         window.setTimeout(() => this.setState({height: 350}), 50);
     }
 
+    /**
+     * This ensures that the card slides smoothly and naturally when it's being swiped.
+     */
     animateSlidingToZero() {
         let { left, right, velocity, beingTouched } = this.state;
 
@@ -53,11 +63,17 @@ export default class UserCard extends Component {
         }
     }
 
+    /**
+     * Set state.height to 0 to effectively remove the card from the view.
+     */
     handleRemoveSelf() {
         this.setState({ height: 0 });
         window.setTimeout(() => this.props.onRemoval(), 250);
     }
 
+    /**
+     * Get the starting position of the event that initiates a "swipe".
+     */
     handleStart(clientX) {
         if (this.state.intervalId !== null) {
             window.clearInterval(this.state.intervalId);
@@ -73,6 +89,10 @@ export default class UserCard extends Component {
         });
     }
 
+    /**
+     * This ensures that a card is removed if it is swiped far enough,
+     * but also keeps a card from being removed if it is not swiped far enough.
+     */
     handleMove(clientX) {
         if (this.state.beingTouched) {
             const touchX = clientX;
@@ -96,6 +116,9 @@ export default class UserCard extends Component {
         }
     }
 
+    /**
+     * Mark the end of a swipe event.
+     */
     handleEnd() {
         this.setState({
             velocity: this.state.velocity,

@@ -1,3 +1,10 @@
+/**
+ * The UserList component renders a list of users that match the filters set
+ * by the user.
+ *
+ * @module components/UserList
+ */
+
 import React, { Component } from 'react';
 import fixtures from '../utils/fixtures.js';
 import Card from './Card';
