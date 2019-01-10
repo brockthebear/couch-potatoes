@@ -1,3 +1,3 @@
 ## Couch Potatoes
 
-🚧 Currently under construction 🚧
+A simple demo to demonstrate how touch and swipe gestures can be used in React.
